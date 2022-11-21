@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap");
+
+:root {
+  /* c - components */
+  --inner-c-margins: 0.9375rem; /* 15px */
+  --inner-c-text-color: hsl(217, 12%, 63%);
+  --inner-c-bg-color: hsl(213, 19%, 18%);
+
+  /* colors */
+  --white: hsl(0, 0%, 100%);
+  --orange: hsl(25, 97%, 53%);
+  --light-grey: hsl(217, 12%, 63%);
+  --medium-grey: hsl(216, 12%, 54%);
+  --dark-blue: hsl(213, 19%, 18%);
+  --very-dark-blue: hsl(216, 12%, 8%);
+}
+
+/* FOUC */
+html {
+  visibility: visible;
+  opacity: 1;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: var(--very-dark-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+rating-component {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 15px;
+  background-color: #1d242e;
+  font-family: "Overpass", sans-serif;
+  font-size: var(--inner-c-margins);
+  margin: 0 auto;
+  max-width: 325px;
+}
+
+@media screen and (min-width: 1440px) {
+  rating-component {
+    max-width: 410px;
+  }
+}
+
+rating-component > .inner-wrapper[data-state="init"] {
+  display: flex;
+}
+
+rating-component > .inner-wrapper[data-state="result"] {
+  display: none;
+  justify-content: center;
+}
+
+rating-component .btn {
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  background-color: var(--orange);
+}
+
+rating-component .inner-wrapper {
+  flex-wrap: wrap;
+  padding: calc(var(--inner-c-margins) * 1.5); /* 22.5px */
+}
+
+@media screen and (min-width: 1440px) {
+  rating-component .inner-wrapper {
+    padding: calc(var(--inner-c-margins) * 2); /* 30px */
+  }
+}
+
+rating-component .inner-wrapper .star {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  background-color: var(--inner-c-bg-color);
+  width: 40px;
+  height: 40px;
+  margin-bottom: var(--inner-c-margins);
+}
+
+@media screen and (min-width: 1440px) {
+  rating-component .inner-wrapper .star {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+rating-component .inner-wrapper .star-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+@media screen and (min-width: 1440px) {
+  rating-component .inner-wrapper .star-img {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+rating-component .content {
+  margin-top: var(--inner-c-margins);
+  margin-bottom: var(--inner-c-margins);
+}
+
+rating-component .content .title {
+  color: var(--white);
+  font-weight: 700;
+  font-size: calc(var(--inner-c-margins) * 2); /* 30px */
+  margin-top: 0;
+  margin-bottom: 0.625rem; /* 10px */
+}
+
+rating-component .content .description {
+  color: var(--inner-c-text-color);
+  line-height: 1.6;
+  margin: 0;
+}
+
+rating-component .rate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1 0 100%;
+  margin-bottom: var(--inner-c-margins);
+}
+
+rating-component .rate .btn.btn--rate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--inner-c-text-color);
+  border-radius: 100%;
+  background-color: var(--inner-c-bg-color);
+  width: 40px;
+  height: 40px;
+}
+
+@media screen and (min-width: 1440px) {
+  rating-component .rate .btn.btn--rate {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+rating-component .rate .btn.btn--rate:hover {
+  cursor: pointer;
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+rating-component .rate .btn.btn--rate.is-active {
+  background-color: var(--light-grey);
+  color: var(--white);
+}
+
+rating-component .btn.btn--submit {
+  flex: 1 0 100%;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: calc(var(--inner-c-margins) / 1.2);
+  color: var(--white);
+  background-color: var(--orange);
+  margin-top: var(--inner-c-margins);
+}
+
+rating-component .btn.btn--submit:disabled {
+  background-color: var(--medium-grey);
+  pointer-events: none;
+}
+
+rating-component .btn.btn--submit:hover,
+rating-component .btn.btn--submit:focus,
+rating-component .btn.btn--submit:active {
+  cursor: pointer;
+  background-color: var(--white);
+  color: var(--orange);
+}
+
+rating-component .success-image-wrp {
+  flex: 1 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--inner-c-margins);
+}
+
+rating-component .success-image-wrp img {
+  width: 150px;
+  height: 110px;
+  object-fit: contain;
+}
+
+rating-component .result {
+  color: var(--orange);
+  border-radius: 30px;
+  padding: 5px 15px;
+  background-color: var(--dark-blue);
+  margin-bottom: var(--inner-c-margins);
+}
+
+rating-component .inner-wrapper[data-state="result"] .content {
+  text-align: center;
+}
